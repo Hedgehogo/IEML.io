@@ -129,7 +129,7 @@ Example:
 
 ### Lists
 
-After `- ` you can write ` = `, the first space can be omitted. This is followed by a line containing no characters: ``, `\n` (Enter), `<`, `>`. This will assign a tag to the list item.
+After `- ` you can write ` = `, the first space can be omitted. This is followed by a line containing no characters: `"`, `\n` (Enter), `<`, `>`. This will assign a tag to the list item.
 
 Example:
 ```
@@ -139,7 +139,7 @@ Example:
 
 ### Maps
 
-After the key name but before `: ` you can write ` = `, the first space can be omitted. This is followed by a line containing no characters: ``, `\n` (Enter), `<`, `>`. And after that write `: `. This will assign a tag to the content by key.
+After the key name but before `: ` you can write ` = `, the first space can be omitted. This is followed by a line containing no characters: `"`, `\n` (Enter), `<`, `>`. And after that write `: `. This will assign a tag to the content by key.
 
 Example:
 ```
