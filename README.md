@@ -14,6 +14,15 @@ Nesting level is determined by indentation, indentation is allowed only from tab
 ```
 
 ## Scalar values
+### Bool
+
+A string equal to "true", "false", "yes", "no" is treated as a boolean value.
+
+Example:
+```
+yes
+```
+
 ### Numbers
 *Integer decimal numbers.*
 
@@ -76,6 +85,15 @@ Starts without special characters, ends at the end of the line where it began. C
 Example:
 ```
 Hello IEML!
+```
+
+### Null
+
+A string equal to "null" is treated as a Null node.
+
+Example:
+```
+null
 ```
 
 ## Lists
@@ -188,3 +206,7 @@ Example:
 key: < subfile.ieml
     name: John
 ```
+
+# For developers
+
+It is recommended to store all scalars except Null as strings and then convert them to the desired type when queried.
