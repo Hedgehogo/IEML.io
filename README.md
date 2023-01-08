@@ -16,7 +16,7 @@ Nesting level is determined by indentation, indentation is allowed only from tab
 ## Scalar values
 ### Bool
 
-A string equal to "true", "false", "yes", "no" is treated as a boolean value.
+A string equal to `true`, `false`, `yes`, `no` is treated as a boolean value.
 
 Example:
 ```
@@ -89,7 +89,7 @@ Hello IEML!
 
 ### Null
 
-A string equal to "null" is treated as a Null node.
+A string equal to `null` is treated as a Null node.
 
 Example:
 ```
