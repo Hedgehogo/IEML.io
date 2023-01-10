@@ -136,7 +136,7 @@ All values can be assigned a tag. This is some string that can store some charac
 
 ### All
 
-At the beginning you can write ` = `, the first space can be omitted. After that a string containing no characters: `"`, `\n` (Enter), `<`, `>`. This will assign a tag to all content.
+At the beginning you can write ` = `, the first space can be omitted. After that a string containing no characters: `"`, `\n` (Enter), `<`, `>`. And after that write `: `, space can be omitted. This will assign a tag to all content.
 
 Example:
 ```
@@ -147,7 +147,7 @@ Example:
 
 ### Lists
 
-After `- ` you can write ` = `, the first space can be omitted. This is followed by a line containing no characters: `"`, `\n` (Enter), `<`, `>`. This will assign a tag to the list item.
+After `- ` you can write ` = `, the first space can be omitted. This is followed by a line containing no characters: `"`, `\n` (Enter), `<`, `>`. And after that write `: `, space can be omitted. This will assign a tag to the list item.
 
 Example:
 ```
