@@ -210,3 +210,14 @@ key: < subfile.ieml
 # For developers
 
 It is recommended to store all scalars except Null as strings and then convert them to the desired type when queried.
+
+# A little clarification
+```
+22:22 # A map with one pair, whose key is 22 and the value is an integer 22.
+```
+```
+no # It is a bool, but if you explicitly ask for a string it will be a string, because the parser should store it as a string and convert it only when asked.
+```
+```
+null # It is always null, can never be a string, if you need to specify a string use special characters.
+```
