@@ -195,6 +195,11 @@ Example:
 key: < subfile.ieml
 ```
 
+What the `subfile.ieml` could look like:
+```
+Inside the child file!
+```
+
 ### Anchors
 
 All file anchors are retired when the file is loaded, but the child file can access the anchors of the parent file.
@@ -203,8 +208,15 @@ When you load a file, you can pass a list of anchors that will be used by the fi
 
 Example:
 ```
-key: < subfile.ieml
+key: < editor.ieml
     name: John
+```
+
+What the `editor.ieml` could look like:
+```
+template-editor:
+    text: Let's talk about IEML!
+    name: *name
 ```
 
 # For developers
