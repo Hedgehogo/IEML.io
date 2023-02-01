@@ -78,7 +78,7 @@ Example:
 > "IEML"!
 ```
 
-*Simple string*
+*Raw data*
 
 Starts without special characters, ends at the end of the line where it began. Characters are not escaped. Characters are forbidden: `"`, `\n` (Enter), `>`, `<`.
 
@@ -104,7 +104,7 @@ Example:
 ```
 - 10
 - 1.15
-- Hello
+- > Hello
 - - 2
   - 4
 ```
@@ -141,8 +141,8 @@ At the beginning you can write ` = `, the first space can be omitted. After that
 Example:
 ```
 = Meat:
-  - Chicken
-  - Turkey
+  - > Chicken
+  - > Turkey
 ```
 
 ### Lists
@@ -151,8 +151,8 @@ After `- ` you can write ` = `, the first space can be omitted. This is followed
 
 Example:
 ```
-- = Animal: dog
-- stone
+- = Animal: > dog
+- > stone
 ```
 
 ### Maps
@@ -161,28 +161,28 @@ After the key name but before `: ` you can write ` = `, the first space can be o
 
 Example:
 ```
-name = English: John
-job: Chef
+name = English: > John
+job: > Chef
 ```
 
 ## Anchors
 ### Taking
 
-You can write `&` before the value, after which a string not containing: `"`, `\n`, `<`, `>`, ` `. This string will be the name of the anchor. 
+You can write `&` before the value, after which a string not containing: `"`, `\n` (Enter), `<`, `>`, ` `. This string will be the name of the anchor. 
 Space after the anchor is skipped, then comes the value.
 
 Example:
 ```
-&name John
+&name > John
 ```
 
 ### Getting
 
-You can write `*` before the value, followed by a string that does not contain: `"`, `\n`, `<`, `>`, ` `. This string will be the name of the requested anchor. Its value will be inserted in that place.
+You can write `*` before the value, followed by a string that does not contain: `"`, `\n` (Enter), `<`, `>`, ` `. This string will be the name of the requested anchor. Its value will be inserted in that place.
 
 Example:
 ```
-take: &name John
+take: &name > John
 get: *name #Here will be the "John"
 ```
 
@@ -197,7 +197,7 @@ key: < subfile.ieml
 
 What the `subfile.ieml` could look like:
 ```
-Inside the child file!
+> Inside the child file!
 ```
 
 ### Anchors
@@ -209,26 +209,26 @@ When you load a file, you can pass a list of anchors that will be used by the fi
 Example:
 ```
 key: < editor.ieml
-    name: John
+    name: > John
 ```
 
 What the `editor.ieml` could look like:
 ```
 template-editor:
-    text: Let's talk about IEML!
+    text: > Let's talk about IEML!
     name: *name
 ```
 
 # For developers
 
-It is recommended to store all scalars except Null as strings and then convert them to the desired type when queried.
+It is recommended to store all scalars except Null and String as raw data (strings) and then convert them to the desired type when queried.
 
 # A little clarification
 ```
 22:22 # A map with one pair, whose key is 22 and the value is an integer 22.
 ```
 ```
-no # It is a bool, but if you explicitly ask for a string it will be a string, because the parser should store it as a string and convert it only when asked.
+no # It is a bool, but if you explicitly ask for a raw data it will be a raw data, because the parser should store it as a raw data and convert it only when asked.
 ```
 ```
 null # It is always null, can never be a string, if you need to specify a string use special characters.
