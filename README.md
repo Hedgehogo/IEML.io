@@ -66,7 +66,7 @@ Example:
 ### Strings
 *Classic string*
 
-It is written in `"`. Characters are escaped with `\`. The characters supported for escaping: `n`, `t`, `"`, `\`.
+It is written in `"`. Characters are escaped with `\`. The characters supported for escaping: `n`, `t`, `"`, `\`. Any characters are allowed, except `"` without `\` before it, including `\n` (Enter).
 
 Example:
 ```
