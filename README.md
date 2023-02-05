@@ -75,12 +75,12 @@ Example:
 
 *Unshielded string*
 
-Each line starts with characters `> ` and reads to the end of the line. The characters are not escaped.
+Each line starts with characters `> ` and reads to the end of the line. The characters are not escaped. The indentation level is ignored, ` `, `\t` (Enter) are allowed as an indent.
 
 Example:
 ```
 > Hello
-> "IEML"!
+  > "IEML"!
 ```
 
 ### Raw data
