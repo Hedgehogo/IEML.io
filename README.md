@@ -220,8 +220,8 @@ key: < editor.ieml
 What the `editor.ieml` could look like:
 ```
 template-editor:
-    text: > Let's talk about IEML!
-    name: *name
+  text: > Let's talk about IEML!
+  name: *name
 ```
 
 # For developers
