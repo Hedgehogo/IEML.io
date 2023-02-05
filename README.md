@@ -6,11 +6,16 @@ IEML (Interface Engine Markup Language) - A simple but powerful config with supp
 
 # Syntax
 
-Nesting level is determined by indentation, indentation is allowed only from tabs.
+Nesting level is determined by indentation, indentation is allowed only from tabs. The examples use double spaces for convenience. (In github you can't set the tab size, and the default is too big)
 
 ## Comments
+
+The comment begins with `#`, must be preceded by ` `, `\t` (Tab) or the beginning of the line, and ends at the end of the line.
+
+Example:
 ```
- # The commentary will go from the " #" to the end of the line.
+# At the beginning of the line
+10 # After the space
 ```
 
 ## Scalar values
@@ -98,7 +103,7 @@ null
 
 ## Lists
 
-Each element of the list is denoted by `- `, a space can be omitted.
+Each element of the list is denoted by `- `, a space can be replaced by `\n` (Enter).
 
 Example:
 ```
