@@ -188,7 +188,7 @@ You can write `*` before the value, followed by a string that does not contain: 
 Example:
 ```
 take: &name > John
-get: *name #Here will be the "John"
+get: *name # Here will be the "John"
 ```
 
 ## Downloading files
