@@ -6,7 +6,7 @@ IEML (Interface Engine Markup Language) - A simple but powerful config with supp
 
 # Syntax
 
-Nesting level is determined by indentation, indentation is allowed only from tabs. The examples use double spaces for convenience.
+Nesting level is determined by indentation, indentation is allowed only from tabs. The examples use double spaces.
 
 ## Comments
 
