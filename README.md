@@ -2,7 +2,7 @@
 IEML (Interface Engine Markup Language) - A simple but powerful config with support for file uploads, inter-file anchors and tags.
 
 # Implementations
-- [C++](https://github.com/Hedgehogo/IEML-cpp) (*Unshielded strings* with `>>` and *short lists* are not supported)
+- [C++](https://github.com/Hedgehogo/IEML-cpp) (*Unshielded strings* with `>>`, *short lists*, and separator `_` between digits are not supported)
 
 # Syntax
 
@@ -31,6 +31,8 @@ yes
 ### Numbers
 *Integer decimal numbers.*
 
+`_` can be used as a separator between digits.
+
 Example:
 ```
 105
@@ -38,7 +40,7 @@ Example:
 
 *Integers in a particular system of notation.*
 
-Zero is written first, followed by an English letter from A to Z, indicating a numbering system from 1-cimal to 26-cimal respectively. This is followed by a number in the resulting number system with all the letters in upper case.
+Zero is written first, followed by an English letter from A to Z, indicating a numbering system from 1-cimal to 26-cimal respectively. This is followed by a number in the resulting number system with all the letters in upper case. `_` can be used as a separator between digits.
 
 Example:
 ```
@@ -47,7 +49,7 @@ Example:
 
 *Real decimal numbers.*
 
-A dot is used as a separator.
+` ` is used as a separator between the integer part and the fractional part. `_` can be used as a separator between digits.
 
 Example:
 ```
@@ -56,7 +58,7 @@ Example:
 
 *Real numbers in a particular number system.*
 
-Zero is written first, followed by an English letter from A to Z, indicating a numbering system from 1-cimal to 26-cimal respectively. This is followed by a number in the resulting number system with all the letters in upper case. A dot is used as a separator.
+Zero is written first, followed by an English letter from A to Z, indicating a numbering system from 1-cimal to 26-cimal respectively. This is followed by a number in the resulting number system with all the letters in upper case. ` ` is used as a separator between the integer part and the fractional part. `_` can be used as a separator between digits.
 
 Example:
 ```
