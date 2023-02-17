@@ -2,7 +2,7 @@
 IEML (Interface Engine Markup Language) - A simple but powerful config with support for file uploads, inter-file anchors and tags.
 
 # Implementations
-- [C++](https://github.com/Hedgehogo/IEML-cpp)
+- [C++](https://github.com/Hedgehogo/IEML-cpp) (Unshielded strings with `>>` and short lists are not supported)
 
 # Syntax
 
@@ -129,7 +129,8 @@ Example:
 Starts with `[` and ends with `]`. Inside there is data in `, `. 
 
 Valid data:
-- Scalar values
+- Bool 
+- Numbers
 - Classic string
 - Raw data
 - Null
