@@ -75,12 +75,21 @@ Example:
 
 *Unshielded string*
 
-Each line starts with characters `> ` and reads to the end of the line. The characters are not escaped. The indentation level is ignored, ` `, `\t` (Enter) are allowed as an indent.
+Each line starts with characters `> ` and reads to the end of the line. The characters are not escaped. The indentation level is ignored, ` `, `\t` (Tab) are allowed as an indent.
 
 Example:
 ```
 > Hello
   > "IEML"!
+```
+
+It begins with `>>` characters followed immediately by the end of the line. Then each line starts with an indent, followed immediately by a string to the end of the line. This continues until the indentation is lower than required or the end of the file is reached.
+
+Example:
+```
+>>
+Hello
+"IEML"!
 ```
 
 ### Raw data
@@ -114,6 +123,23 @@ Example:
   - 2
   - 4
 ```
+
+### Short note
+
+Starts with `[` and ends with `]`. Inside there is data in `, `. 
+
+Valid data:
+- Scalar values
+- Classic string
+- Raw data
+- Null
+- Other short list
+
+Example:
+```
+[12, true, "Hello", Hello, null, [10, 15]]
+```
+
 
 ## Maps
 
