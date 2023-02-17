@@ -19,7 +19,7 @@ Example:
 ```
 
 ## Scalar values
-### Bool
+### Boolean
 
 A string equal to `true`, `false`, `yes`, `no` is treated as a boolean value.
 
@@ -129,7 +129,7 @@ Example:
 Starts with `[` and ends with `]`. Inside there is data in `, `. 
 
 Valid data:
-- Bool 
+- Boolean
 - Numbers
 - Classic string
 - Raw data
@@ -263,7 +263,7 @@ A map with one pair, whose key is 22 and the value is an integer 22:
 22:22
 ```
 
-It is a bool, but if you explicitly ask for a raw data it will be a raw data, because the parser should store it as a raw data and convert it only when asked:
+It is a boolean, but if you explicitly ask for a raw data it will be a raw data, because the parser should store it as a raw data and convert it only when asked:
 ```
 no
 ```
