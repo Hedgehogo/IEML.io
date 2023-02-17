@@ -94,6 +94,8 @@ Hello
 
 ### Raw data
 
+*Boolean* and *Numbers* can be read as Raw data if the config-reader so requests.
+
 Starts without special characters, ends at the end of the line where it began. Characters are not escaped. Characters are forbidden: `"`, `\n` (Enter), `>`, `<`.
 
 Example:
@@ -263,7 +265,7 @@ A *map* with one pair, whose key is `22` and the value is an integer `22`:
 22:22
 ```
 
-It is a *Boolean*, but if you explicitly ask for a *Raw data* it will be a *Raw data*, because the parser should store it as a *Raw data* and convert it only when asked:
+It is a *Boolean*, but if you explicitly ask for a *Raw data* it will be a *Raw data*:
 ```
 no
 ```
