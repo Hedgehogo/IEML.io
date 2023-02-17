@@ -49,7 +49,7 @@ Example:
 
 *Real decimal numbers.*
 
-` ` is used as a separator between the integer part and the fractional part. `_` can be used as a separator between digits.
+`.` is used as a separator between the integer part and the fractional part. `_` can be used as a separator between digits.
 
 Example:
 ```
@@ -58,7 +58,7 @@ Example:
 
 *Real numbers in a particular number system.*
 
-Zero is written first, followed by an English letter from A to Z, indicating a numbering system from 1-cimal to 26-cimal respectively. This is followed by a number in the resulting number system with all the letters in upper case. ` ` is used as a separator between the integer part and the fractional part. `_` can be used as a separator between digits.
+Zero is written first, followed by an English letter from A to Z, indicating a numbering system from 1-cimal to 26-cimal respectively. This is followed by a number in the resulting number system with all the letters in upper case. `.` is used as a separator between the integer part and the fractional part. `_` can be used as a separator between digits.
 
 Example:
 ```
