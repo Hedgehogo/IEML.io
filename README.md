@@ -257,20 +257,3 @@ template-editor:
 # For developers
 
 It is recommended to store all *Scalars values* except *Null* and *String* as *Raw data* (strings) and then convert them to the desired type when queried.
-
-# A little clarification
-
-A *map* with one pair, whose key is `22` and the value is an integer `22`:
-```
-22:22
-```
-
-It is a *Boolean*, but if you explicitly ask for a *Raw data* it will be a *Raw data*:
-```
-no
-```
-
-It is always *Null*, can never be a *Raw data*:
-```
-null
-```
