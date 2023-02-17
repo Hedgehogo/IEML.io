@@ -134,7 +134,7 @@ Valid data:
 - *Classic string*
 - *Raw data*
 - *Null*
-- *Other short list*
+- Another *List* in the *Short note*
 
 Example:
 ```
