@@ -2,7 +2,7 @@
 IEML (Interface Engine Markup Language) - A simple but powerful config with support for file uploads, inter-file anchors and tags.
 
 # Implementations
-- [C++](https://github.com/Hedgehogo/IEML-cpp) (Unshielded strings with `>>` and short lists are not supported)
+- [C++](https://github.com/Hedgehogo/IEML-cpp) (*Unshielded strings* with `>>` and *short lists* are not supported)
 
 # Syntax
 
@@ -21,7 +21,7 @@ Example:
 ## Scalar values
 ### Boolean
 
-A string equal to `true`, `false`, `yes`, `no` is treated as a boolean value.
+A string equal to `true`, `false`, `yes`, `no` is treated as a Boolean value.
 
 Example:
 ```
@@ -103,7 +103,7 @@ Hello IEML!
 
 ### Null
 
-A string equal to `null` is treated as a Null node.
+A string equal to `null` is treated as a Null.
 
 Example:
 ```
@@ -129,12 +129,12 @@ Example:
 Starts with `[` and ends with `]`. Inside there is data in `, `. 
 
 Valid data:
-- Boolean
-- Numbers
-- Classic string
-- Raw data
-- Null
-- Other short list
+- *Boolean*
+- *Numbers*
+- *Classic string*
+- *Raw data*
+- *Null*
+- *Other short list*
 
 Example:
 ```
@@ -156,7 +156,7 @@ b:
 
 ## Short note
 
-If there is only one value in a list or in a map, you can write them on one line.
+If there is only one value in a *List* or in a *Map*, you can write them on one line.
 
 Example:
 ```
@@ -180,7 +180,7 @@ Example:
 
 ### Lists
 
-After `- ` you can write ` = `, the first space can be omitted. This is followed by a line containing no characters: `"`, `\n` (Enter), `<`, `>`. And after that write `: `, space can be omitted. This will assign a tag to the list item.
+After `- ` you can write ` = `, the first space can be omitted. This is followed by a line containing no characters: `"`, `\n` (Enter), `<`, `>`. And after that write `: `, space can be omitted. This will assign a tag to the *List* item.
 
 Example:
 ```
@@ -237,7 +237,7 @@ What the `subfile.ieml` could look like:
 
 All file anchors are retired when the file is loaded, but the child file can access the anchors of the parent file.
 
-When you load a file, you can pass a list of anchors that will be used by the file as a map. these anchors will only wind up in the file.
+When you load a file, you can pass a *map* of anchors, these anchors will only wind up in the file.
 
 Example:
 ```
@@ -254,21 +254,21 @@ template-editor:
 
 # For developers
 
-It is recommended to store all scalars except Null and String as raw data (strings) and then convert them to the desired type when queried.
+It is recommended to store all *Scalars values* except *Null* and *String* as *Raw data* (strings) and then convert them to the desired type when queried.
 
 # A little clarification
 
-A map with one pair, whose key is 22 and the value is an integer 22:
+A *map* with one pair, whose key is `22` and the value is an integer `22`:
 ```
 22:22
 ```
 
-It is a boolean, but if you explicitly ask for a raw data it will be a raw data, because the parser should store it as a raw data and convert it only when asked:
+It is a *Boolean*, but if you explicitly ask for a *Raw data* it will be a *Raw data*, because the parser should store it as a *Raw data* and convert it only when asked:
 ```
 no
 ```
 
-It is always null, can never be a raw data:
+It is always *Null*, can never be a *Raw data*:
 ```
 null
 ```
