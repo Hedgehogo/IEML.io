@@ -230,12 +230,18 @@ template-editor:
 It is recommended to store all scalars except Null and String as raw data (strings) and then convert them to the desired type when queried.
 
 # A little clarification
+
+A map with one pair, whose key is 22 and the value is an integer 22:
 ```
-22:22 # A map with one pair, whose key is 22 and the value is an integer 22.
+22:22
 ```
+
+It is a bool, but if you explicitly ask for a raw data it will be a raw data, because the parser should store it as a raw data and convert it only when asked:
 ```
-no # It is a bool, but if you explicitly ask for a raw data it will be a raw data, because the parser should store it as a raw data and convert it only when asked.
+no
 ```
+
+It is always null, can never be a raw data:
 ```
-null # It is always null, can never be a string, if you need to specify a string use special characters.
+null
 ```
