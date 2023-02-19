@@ -173,7 +173,7 @@ All values can be assigned a tag. This is some string that can store some charac
 
 ### All
 
-At the beginning you can write ` = `, the first space can be omitted. After that a string containing no characters: `"`, `\n` (Enter), `<`, `>`. And after that write `: `, space can be omitted. This will assign a tag to all content.
+At the beginning you can write <code>&nbsp;=&nbsp;</code>, the first space can be omitted. After that a string containing no characters: `"`, `\n` (Enter), `<`, `>`. And after that write `: `, space can be omitted. This will assign a tag to all content.
 
 Example:
 ```
@@ -184,7 +184,7 @@ Example:
 
 ### Lists
 
-After `- ` you can write ` = `, the first space can be omitted. This is followed by a line containing no characters: `"`, `\n` (Enter), `<`, `>`. And after that write `: `, space can be omitted. This will assign a tag to the *List* item.
+After `- ` you can write <code>&nbsp;=&nbsp;</code>, the first space can be omitted. This is followed by a line containing no characters: `"`, `\n` (Enter), `<`, `>`. And after that write `: `, space can be omitted. This will assign a tag to the *List* item.
 
 Example:
 ```
@@ -194,7 +194,7 @@ Example:
 
 ### Maps
 
-After the key name but before `: ` you can write ` = `, the first space can be omitted. This is followed by a line containing no characters: `"`, `\n` (Enter), `<`, `>`. And after that write `: `. This will assign a tag to the content by key.
+After the key name but before `: ` you can write <code>&nbsp;=&nbsp;</code>, the first space can be omitted. This is followed by a line containing no characters: `"`, `\n` (Enter), `<`, `>`. And after that write `: `. This will assign a tag to the content by key.
 
 Example:
 ```
