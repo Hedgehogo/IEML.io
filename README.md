@@ -35,7 +35,7 @@ yes
 
 Example:
 ```
-105
+1_005
 ```
 
 *Integers in a particular system of notation.*
