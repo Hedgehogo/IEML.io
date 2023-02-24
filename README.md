@@ -68,7 +68,16 @@ Example:
 ### Strings
 *Classic string*
 
-It is written in `"`. Characters are escaped with `\`. The characters supported for escaping: `n`, `t`, `"`, `\`. Any characters are allowed, except `"` without `\` before it, including `\n` (Enter).
+It is written in `"`. Characters are escaped with `\`. The characters supported for escaping: 
+| The symbol after `\` | The result   |
+|----------------------|--------------|
+| `n`                  | `\n` (Enter) |
+| `t`                  | `\t` (Tab)   |
+| `"`                  | `"`          |
+| `\`                  | `\`          |
+| `\n` (Enter)         | Nothing      |
+
+Any characters are allowed, except `"` without `\` before it, including `\n` (Enter).
 
 Example:
 ```
