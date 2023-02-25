@@ -12,6 +12,8 @@ Nesting level is determined by indentation, indentation is allowed only from tab
 
 The comment begins with `#`, must be preceded by ` `, `\t` (Tab) or the beginning of the line, and ends at the end of the line.
 
+There may be blank lines at the beginning and end of the file, consisting of: ` `, `\t` (Tab) and comments.
+
 Example:
 ```
 # At the beginning of the line
@@ -127,10 +129,13 @@ null
 
 Each element of the list is denoted by `- `, a space can be replaced by `\n` (Enter).
 
+There may be blank lines between and in front of the *List* items, consisting of: ` `, `\t` (Tab) and comments.
+
 Example:
 ```
 - 10
 - 1.15
+  # String
 - > Hello
 - 
   - 2
@@ -158,6 +163,8 @@ Example:
 ## Maps
 
 The map consists of keys and their corresponding values. Keys cannot be repeated. Symbols cannot be used in the key name: `"`, `\n` (Enter), `>`, `<`. Keys and values are separated by `: `, space can be omitted.
+
+There may be blank lines between and in front of the *Map* items, consisting of: ` `, `\t` (Tab) and comments.
 
 Example:
 ```
@@ -255,7 +262,7 @@ When you load a file, you can pass a *map* of anchors, these anchors will only w
 Example:
 ```
 key: < editor.ieml
-    name: > John
+  name: > John
 ```
 
 What the `editor.ieml` could look like:
