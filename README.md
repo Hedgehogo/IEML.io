@@ -44,27 +44,42 @@ Example:
 
 Zero is written first, followed by an English letter from A to Z, indicating a numbering system from 1-cimal to 26-cimal respectively. This is followed by a number in the resulting number system with all the letters in upper case. `_` can be used as a separator between digits.
 
-Example:
+Examples:
 ```
-0pFF
+0pFF # Hexadecimal, 255 in decimal
+```
+```
+0b01100101 # Binary, 101 in decimal
 ```
 
 *Real decimal numbers.*
 
-`.` is used as a separator between the integer part and the fractional part. `_` can be used as a separator between digits.
+`.` is used as a separator between the integer part and the fractional part. `_` can be used as a separator between digits. The integer part is required to have at least one digit.
 
-Example:
+Examples:
 ```
 1.15
+```
+```
+23.
+```
+```
+.1 # Error
 ```
 
 *Real numbers in a particular number system.*
 
-Zero is written first, followed by an English letter from A to Z, indicating a numbering system from 1-cimal to 26-cimal respectively. This is followed by a number in the resulting number system with all the letters in upper case. `.` is used as a separator between the integer part and the fractional part. `_` can be used as a separator between digits.
+Zero is written first, followed by an English letter from A to Z, indicating a numbering system from 1-cimal to 26-cimal respectively. This is followed by a number in the resulting number system with all the letters in upper case. `.` is used as a separator between the integer part and the fractional part. `_` can be used as a separator between digits. The integer part is required to have at least one digit.
 
-Example:
+Examples:
 ```
-0c0.1 # You get 1/3
+0c0.1 # Trinary, 1/3 in decimal
+```
+```
+0b10. # Binary, 2 in decimal
+```
+```
+0b.1 # Binary, error
 ```
 
 ### Strings
@@ -81,28 +96,45 @@ It is written in `"`. Characters are escaped with `\`. The characters supported 
 
 Any characters are allowed, except `"` without `\` before it, including `\n` (Enter).
 
-Example:
+Examples:
 ```
-"Hello\n\"IEML\"!"
+"Hello\n\"IEML\"!" # Hello(Enter)"IEML"!
+```
+```
+"Hello
+\"IEML\"!" # Same as the first one
+```
+```
+"Hello\
+\n\"IEML\"!" # Same as the first one
 ```
 
 *Unshielded string*
 
 Each line starts with characters `> ` and reads to the end of the line. The characters are not escaped. The indentation level is ignored, ` `, `\t` (Tab) are allowed as an indent.
 
-Example:
+Examples:
 ```
 > Hello
   > "IEML"!
 ```
+```
+>  # Not a comment
+```
 
 It begins with `>>` characters followed immediately by the end of the line. Then each line starts with an indent, followed immediately by a string to the end of the line. This continues until the indentation is lower than required or the end of the file is reached.
 
-Example:
+Examples:
 ```
 >>
 Hello
 "IEML"!
+```
+```
+  >>
+  Part of a string
+    Part of a string (Including tab)
+Not part of the string
 ```
 
 ### Raw data
@@ -111,18 +143,24 @@ Hello
 
 Starts without special characters, ends at the end of the line where it began. Characters are not escaped. Characters are forbidden: `"`, `\n` (Enter), `>`, `<`.
 
-Example:
+Examples:
 ```
 Hello IEML!
+```
+```
+>Hello IEML! # Error, Raw data prohibits the `>` character, and an unshielded string requires a space after this character
 ```
 
 ### Null
 
 A string equal to `null` is treated as a Null.
 
-Example:
+Examples:
 ```
 null
+```
+```
+ null # Raw data, Null does not allow spaces before the word
 ```
 
 ## Lists
@@ -204,8 +242,8 @@ After `- ` you can write <code>&nbsp;=&nbsp;</code>, the first space can be omit
 
 Example:
 ```
-- = Animal: > dog
-- > stone
+- = Animal: > Dog
+- > Stone
 ```
 
 ### Maps
