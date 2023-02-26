@@ -310,6 +310,21 @@ template-editor:
   name: *name
 ```
 
+In addition to passing anchors, child files can access parent file anchors directly.
+
+Example:
+```
+name-key: &name John
+key: < editor.ieml
+```
+
+What the `editor.ieml` could look like:
+```
+template-editor:
+  text: > Let's talk about IEML!
+  name: *name
+```
+
 # For developers
 
 It is recommended to store all *Scalars values* except *Null* and *String* as *Raw data* (strings) and then convert them to the desired type when queried.
