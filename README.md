@@ -267,7 +267,7 @@ Example:
 &name > John
 ```
 
-Anchors can be shaded by other anchors.
+Anchors can be overwritten and shaded by other anchors.
 
 Example:
 ```
