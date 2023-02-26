@@ -267,6 +267,17 @@ Example:
 &name > John
 ```
 
+Anchors can be shaded by other anchors.
+
+Example:
+```
+# name = "John"
+first: &name > John
+
+# name = "Kate"
+second: &name > Kate
+```
+
 ### Getting
 
 You can write `*` before the value, followed by a string that does not contain: `"`, `\n` (Enter), `<`, `>`, ` `. This string will be the name of the requested anchor. Its value will be inserted in that place.
@@ -311,6 +322,7 @@ template-editor:
 ```
 
 In addition to passing anchors, child files can access parent file anchors directly.
+If there is an anchor in both the child and parent file, then the anchor of the child file is selected. Anchors passed with *Map* are considered to be anchors of the child file.
 
 Example:
 ```
