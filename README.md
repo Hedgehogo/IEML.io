@@ -109,7 +109,7 @@ Examples:
 \n\"IEML\"!" # Same as the first one
 ```
 
-*Unshielded string*
+*Not escaped string*
 
 Each line starts with characters `> ` and reads to the end of the line. The characters are not escaped. The indentation level is ignored, ` `, `\t` (Tab) are allowed as an indent.
 
