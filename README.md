@@ -10,7 +10,7 @@ Nesting level is determined by indentation, indentation is allowed only from tab
 
 ## Comments
 
-The comment begins with `#`, must be preceded by ` `, `\t` (Tab) or the beginning of the line, and ends at the end of the line.
+The comment begins with `# `.
 
 There may be blank lines at the beginning and end of the file, consisting of: ` `, `\t` (Tab) and comments.
 
