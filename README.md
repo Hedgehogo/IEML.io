@@ -2,7 +2,7 @@
 IEML (Interface Engine Markup Language) - A simple but powerful config with support for file uploads, inter-file anchors and tags.
 
 # Implementations
-- [C++](https://github.com/Hedgehogo/IEML-cpp) (*short lists* are not supported)
+- [C++](https://github.com/Hedgehogo/IEML-cpp) (*short lists* are not supported, support for comments is outdated)
 
 # Syntax
 
@@ -10,14 +10,14 @@ Nesting level is determined by indentation, indentation is allowed only from tab
 
 ## Comments
 
-The comment begins with `# `.
+The comment begins with `# ` and ends at the end of the line.
 
 There may be blank lines at the beginning and end of the file, consisting of: ` `, `\t` (Tab) and comments.
 
 Example:
 ```
 # At the beginning of the line
-10 # After the space
+10 # After the scalar
 ```
 
 ## Scalar values
