@@ -6,7 +6,7 @@ IEML (Interface Engine Markup Language) - A simple but powerful config with supp
 
 # Syntax
 
-Nesting level is determined by indentation, indentation is allowed only from tabs. The examples use double spaces.
+Nesting level is determined by indentation, indentation is allowed only from tabs.
 
 ## Comments
 
@@ -104,15 +104,15 @@ Examples:
 "Hello\t\n\"IEML\"!" # Hello{Enter}"IEML"!
 ```
 ```
-  "Hello\t
-  \"IEML\"!" # Same as the first one
+	"Hello\t
+	\"IEML\"!" # Same as the first one
 ```
 ```
-  "Hello\
-    \n\"IEML\"!" # Same as the first one
+	"Hello\
+		\n\"IEML\"!" # Same as the first one
 ```
 ```
-  "Hello\t
+	"Hello\t
 \"IEML\"!" # Error, the tab level for the string is not respected
 ```
 
@@ -139,9 +139,9 @@ Hello
 "IEML"!
 ```
 ```
-  >>
-  Part of a string
-    Part of a string (Including tab)
+	>>
+	Part of a string
+		Part of a string (Including tab)
 Not part of the string
 ```
 
@@ -184,8 +184,8 @@ Example:
   # String
 - > Hello
 - 
-  - 2
-  - 4
+	- 2
+	- 4
 ```
 
 ### Short note
@@ -216,8 +216,8 @@ Example:
 ```
 a: 10
 b:
-  - 15
-  - 20
+	- 15
+	- 20
 ```
 
 ## Short note
@@ -240,8 +240,8 @@ At the beginning you can write <code>&nbsp;=&nbsp;</code>, the first space can b
 Example:
 ```
 = Meat:
-  - > Chicken
-  - > Turkey
+	- > Chicken
+	- > Turkey
 ```
 
 ### Lists
@@ -319,14 +319,14 @@ When you include a file, you can pass a *map* of anchors, these anchors will onl
 Example:
 ```
 key: < editor.ieml
-  name: > John
+	name: > John
 ```
 
 What the `editor.ieml` could look like:
 ```
 template-editor:
-  text: > Let's talk about IEML!
-  name: *name
+	text: > Let's talk about IEML!
+	name: *name
 ```
 
 In addition to passing anchors, child files can access parent file anchors directly.
@@ -341,8 +341,8 @@ key: < editor.ieml
 What the `editor.ieml` could look like:
 ```
 template-editor:
-  text: > Let's talk about IEML!
-  name: *name
+	text: > Let's talk about IEML!
+	name: *name
 ```
 
 # For developers
