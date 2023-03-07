@@ -2,7 +2,7 @@
 IEML (Interface Engine Markup Language) - A simple but powerful config with support for file uploads, inter-file anchors and tags.
 
 # Implementations
-- [C++](https://github.com/Hedgehogo/IEML-cpp) (*short lists* are not supported, support for comments is outdated)
+- [C++](https://github.com/Hedgehogo/IEML-cpp) (*short lists* are not supported, support for strings and comments is outdated)
 
 # Syntax
 
@@ -83,6 +83,9 @@ Examples:
 ```
 
 ### Strings
+
+All strings must be indented if they are moved to the next line. The indent does not become part of the line.
+
 *Classic string*
 
 It is written in `"`. Characters are escaped with `\`. The characters supported for escaping: 
@@ -98,29 +101,34 @@ Any characters are allowed, except `"` without `\` before it, including `\n` (En
 
 Examples:
 ```
-"Hello\n\"IEML\"!" # Hello(Enter)"IEML"!
+"Hello\t\n\"IEML\"!" # Hello{Enter}"IEML"!
 ```
 ```
-"Hello
-\"IEML\"!" # Same as the first one
+  "Hello\t
+  \"IEML\"!" # Same as the first one
 ```
 ```
-"Hello\
-\n\"IEML\"!" # Same as the first one
+  "Hello\
+    \n\"IEML\"!" # Same as the first one
+```
+```
+  "Hello\t
+\"IEML\"!" # Error, the tab level for the string is not respected
 ```
 
-*Not escaped string*
+*Line string*
 
-Each line starts with characters `> ` and reads to the end of the line. The characters are not escaped. The indentation level is ignored, ` `, `\t` (Tab) are allowed as an indent.
+Each line starts with characters `> ` and reads to the end of the line. The characters are not escaped. It is not permissible to move it to the next line.
 
 Examples:
 ```
-> Hello
-  > "IEML"!
+> Hello "IEML"!
 ```
 ```
->  # Not a comment
+> # Not a comment
 ```
+
+*Not escaped string*
 
 It begins with `>>` characters followed immediately by the end of the line. Then each line starts with an indent, followed immediately by a string to the end of the line. This continues until the indentation is lower than required or the end of the file is reached.
 
