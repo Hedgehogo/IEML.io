@@ -296,7 +296,7 @@ take: &name > John
 get: *name # Here will be the "John"
 ```
 
-## Downloading files
+## Including files
 
 You can write `< ` before the value followed by a line. That line will be the path to the file. The contents of the file will be inserted there after the anchors are processed.
 
@@ -312,9 +312,9 @@ What the `subfile.ieml` could look like:
 
 ### Anchors
 
-All file anchors are retired when the file is loaded, but the child file can access the anchors of the parent file.
+All file anchors are retired when the file is included, but the child file can access the anchors of the parent file.
 
-When you load a file, you can pass a *map* of anchors, these anchors will only wind up in the file.
+When you include a file, you can pass a *map* of anchors, these anchors will only wind up in the file.
 
 Example:
 ```
