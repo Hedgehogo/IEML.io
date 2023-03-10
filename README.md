@@ -2,7 +2,7 @@
 IEML (Interface Engine Markup Language) - A simple but powerful config with support for file uploads, inter-file anchors and tags.
 
 # Implementations 
-- [C++](https://github.com/Hedgehogo/IEML-cpp) (*short lists* are not supported, support for strings and comments is outdated)
+- [C++](https://github.com/Hedgehogo/IEML-cpp) (*short lists* are not supported, support for strings, anchors and comments is outdated)
 
 # Syntax
 
@@ -288,6 +288,8 @@ second: &name > Kate
 
 You can write `*` before the value, followed by a string that does not contain: `"`, `\n` (Enter), `<`, `>`, ` `. This string will be the name of the requested anchor. Its value will be inserted in that place.
 
+Let's assume a non-direct order of anchors. That is, you can first get an anchor, and then take it.
+
 Example:
 ```
 take: &name > John
@@ -311,7 +313,7 @@ What the `subfile.ieml` could look like:
 ### Anchors
 
 All file anchors are retired when the file is included, but the child file can access the anchors of the parent file.
-Anchors inside a file can shade anchors from an external file.
+Anchors inside a file can shade anchors from an parent file.
 
 When you include a file, you can pass a *map* of anchors, these anchors will only wind up in the file.
 
