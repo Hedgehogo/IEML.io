@@ -275,8 +275,6 @@ Example:
 &name > John
 ```
 
-Anchors can be overwritten and shaded by other anchors.
-
 Example:
 ```
 # name = "John"
@@ -313,6 +311,7 @@ What the `subfile.ieml` could look like:
 ### Anchors
 
 All file anchors are retired when the file is included, but the child file can access the anchors of the parent file.
+Anchors inside a file can shade anchors from an external file.
 
 When you include a file, you can pass a *map* of anchors, these anchors will only wind up in the file.
 
