@@ -279,9 +279,6 @@ Example:
 ```
 # name = "John"
 first: &name > John
-
-# name = "Kate"
-second: &name > Kate
 ```
 
 ### Getting
@@ -294,6 +291,10 @@ Example:
 ```
 take: &name > John
 get: *name # Here will be the "John"
+```
+```
+get: *name # Here will be the "John"
+take: &name > John
 ```
 
 ## Including files
