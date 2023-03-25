@@ -118,7 +118,7 @@ Examples:
 
 *Line string*
 
-Each line starts with characters `> ` and reads to the end of the line. The characters are not escaped. It is not permissible to move it to the next line.
+Starts with characters `> ` and reads to the end of the line. The characters are not escaped. It is not permissible to move it to the next line.
 
 Examples:
 ```
@@ -208,7 +208,7 @@ Example:
 
 ## Maps
 
-The map consists of keys and their corresponding values. Keys cannot be repeated. Symbols cannot be used in the key name: `"`, `\n` (Enter), `>`, `<`. Keys and values are separated by `: `, space can be omitted.
+The map consists of keys and their corresponding values. Keys cannot be repeated. Symbols cannot be used in the key name: `"`, `\n` (Enter), `>`, `<`. The first character of the key must not be a ` `. Keys and values are separated by `: `, space can be omitted.
 
 There may be blank lines between and in front of the *Map* items, consisting of: ` `, `\t` (Tab) and comments.
 
