@@ -10,12 +10,13 @@ Nesting level is determined by indentation, indentation is allowed only from tab
 
 ## Comments
 
-The comment begins with `# ` and ends at the end of the line.
+The comment begins with `# ` or `#!` and ends at the end of the line.
 
 There may be blank lines at the beginning and end of the file, consisting of: ` `, `\t` (Tab) and comments.
 
 Example:
 ```
+#!Can be used for shebang
 # At the beginning of the line
 10 # After the scalar
 ```
