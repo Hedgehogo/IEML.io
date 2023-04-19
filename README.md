@@ -10,9 +10,9 @@ Nesting level is determined by indentation, indentation is allowed only from tab
 
 ## Comments
 
-The comment begins with `# ` or `#!` and ends at the end of the line.
+The comment begins with <code>#&nbsp;</code> or `#!` and ends at the end of the line.
 
-There may be blank lines at the beginning and end of the file, consisting of: ` `, ⇥ (Tab) and comments.
+There may be blank lines at the beginning and end of the file, consisting of: <code>&nbsp;</code>, ⇥ (Tab) and comments.
 
 Example:
 ```
@@ -119,7 +119,7 @@ Examples:
 
 *Line string*
 
-Starts with characters `> ` and reads to the end of the line. The characters are not escaped. It is not permissible to move it to the next line.
+Starts with characters <code>>&nbsp;</code> and reads to the end of the line. The characters are not escaped. It is not permissible to move it to the next line.
 
 Examples:
 ```
@@ -174,9 +174,9 @@ null
 
 ## Lists
 
-Each element of the list is denoted by `- `, a space can be replaced by ↵ (Newline).
+Each element of the list is denoted by <code>-&nbsp;</code>, a space can be replaced by ↵ (Newline).
 
-There may be blank lines between and in front of the *List* items, consisting of: ` `, ⇥ (Tab) and comments.
+There may be blank lines between and in front of the *List* items, consisting of: <code>&nbsp;</code>, ⇥ (Tab) and comments.
 
 Example:
 ```
@@ -191,7 +191,7 @@ Example:
 
 ### Short notation
 
-Starts with `[` and ends with `]`. Inside there is data in `, `. 
+Starts with `[` and ends with `]`. Inside there is data in <code>,&nbsp;</code>. 
 
 Valid data:
 - *Boolean*
@@ -209,9 +209,9 @@ Example:
 
 ## Maps
 
-The map consists of keys and their corresponding values. Keys cannot be repeated. Symbols cannot be used in the key name: `"`, ↵ (Newline), `>`, `<`. The first character of the key must not be a ` `. Keys and values are separated by `: `, space can be omitted.
+The map consists of keys and their corresponding values. Keys cannot be repeated. Symbols cannot be used in the key name: `"`, ↵ (Newline), `>`, `<`. The first character of the key must not be a <code>&nbsp;</code>. Keys and values are separated by <code>:&nbsp;</code>, space can be omitted.
 
-There may be blank lines between and in front of the *Map* items, consisting of: ` `, ⇥ (Tab) and comments.
+There may be blank lines between and in front of the *Map* items, consisting of: <code>&nbsp;</code>, ⇥ (Tab) and comments.
 
 Example:
 ```
@@ -236,7 +236,7 @@ All values can be assigned a tag. This is some string that can store some charac
 
 ### All
 
-At the beginning you can write <code>&nbsp;=&nbsp;</code>, the first space can be omitted. After that a string containing no characters: `"`, ↵ (Newline), `<`, `>`. And after that write `: `, space can be omitted. This will assign a tag to all content.
+At the beginning you can write <code>&nbsp;=&nbsp;</code>, the first space can be omitted. After that a string containing no characters: `"`, ↵ (Newline), `<`, `>`. And after that write <code>:&nbsp;</code>, space can be omitted. This will assign a tag to all content.
 
 Example:
 ```
@@ -247,7 +247,7 @@ Example:
 
 ### Lists
 
-After `- ` you can write <code>&nbsp;=&nbsp;</code>, the first space can be omitted. This is followed by a line containing no characters: `"`, ↵ (Newline), `<`, `>`. And after that write `: `, space can be omitted. This will assign a tag to the *List* item.
+After `- ` you can write <code>&nbsp;=&nbsp;</code>, the first space can be omitted. This is followed by a line containing no characters: `"`, ↵ (Newline), `<`, `>`. And after that write <code>:&nbsp;</code>, space can be omitted. This will assign a tag to the *List* item.
 
 Example:
 ```
@@ -257,7 +257,7 @@ Example:
 
 ### Maps
 
-After the key name but before `: ` you can write <code>&nbsp;=&nbsp;</code>, the first space can be omitted. This is followed by a line containing no characters: `"`, ↵ (Newline), `<`, `>`. And after that write `: `. This will assign a tag to the content by key.
+After the key name but before <code>:&nbsp;</code> you can write <code>&nbsp;=&nbsp;</code>, the first space can be omitted. This is followed by a line containing no characters: `"`, ↵ (Newline), `<`, `>`. And after that write <code>:&nbsp;</code>. This will assign a tag to the content by key.
 
 Example:
 ```
@@ -268,7 +268,7 @@ job: > Chef
 ## Anchors
 ### Taking
 
-You can write `&` before the value, after which a string not containing: `"`, ↵ (Newline), `<`, `>`, ` `. This string will be the name of the anchor. 
+You can write `&` before the value, after which a string not containing: `"`, ↵ (Newline), `<`, `>`, <code>&nbsp;</code>. This string will be the name of the anchor. 
 Space after the anchor is skipped, then comes the value.
 
 Example:
@@ -284,7 +284,7 @@ first: &name > John
 
 ### Getting
 
-You can write `*` before the value, followed by a string that does not contain: `"`, ↵ (Newline), `<`, `>`, ` `. This string will be the name of the requested anchor. Its value will be inserted in that place.
+You can write `*` before the value, followed by a string that does not contain: `"`, ↵ (Newline), `<`, `>`, <code>&nbsp;</code>. This string will be the name of the requested anchor. Its value will be inserted in that place.
 
 Let's assume a non-direct order of anchors. That is, you can first get an anchor, and then take it.
 
@@ -300,7 +300,7 @@ take: &name > John
 
 ## Including files
 
-You can write `< ` before the value followed by a line. That line will be the path to the file. The contents of the file will be inserted there after the anchors are processed.
+You can write <code><&nbsp;</code> before the value followed by a line. That line will be the path to the file. The contents of the file will be inserted there after the anchors are processed.
 
 Example:
 ```
@@ -314,8 +314,7 @@ What the `subfile.ieml` could look like:
 
 ### Anchors
 
-All file anchors are retired when the file is included, but the child file can access the anchors of the parent file.
-Anchors inside a file can shade anchors from an parent file.
+All file anchors are retired when the file is included, but the child file can access the anchors of the parent file. Anchors inside a file can shade anchors from an parent file.
 
 When you include a file, you can pass a *map* of anchors, these anchors will only wind up in the file.
 
