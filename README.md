@@ -92,10 +92,10 @@ All strings must be indented if they are moved to the next line. The indent does
 It is written in `"`. Characters are escaped with `\`. The characters supported for escaping: 
 | The symbol after `\` | The result   |
 |----------------------|--------------|
-| `n`                  | ↵ (Newline)  |
-| `t`                  | ⇥ (Tab)      |
 | `"`                  | `"`          |
 | `\`                  | `\`          |
+| `n`                  | ↵ (Newline)  |
+| `t`                  | ⇥ (Tab)      |
 | ↵ (Newline)          | (Nothing)    |
 
 Any characters are allowed, except `"` without `\` before it, including ↵ (Newline).
