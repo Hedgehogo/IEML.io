@@ -12,7 +12,7 @@ Nesting level is determined by indentation, indentation is allowed only from tab
 
 The comment begins with `# ` or `#!` and ends at the end of the line.
 
-There may be blank lines at the beginning and end of the file, consisting of: ` `, `\t` (Tab) and comments.
+There may be blank lines at the beginning and end of the file, consisting of: ` `, ⇥ (Tab) and comments.
 
 Example:
 ```
@@ -92,17 +92,17 @@ All strings must be indented if they are moved to the next line. The indent does
 It is written in `"`. Characters are escaped with `\`. The characters supported for escaping: 
 | The symbol after `\` | The result   |
 |----------------------|--------------|
-| `n`                  | `\n` (Enter) |
-| `t`                  | `\t` (Tab)   |
+| `n`                  | ↵ (Newline)  |
+| `t`                  | ⇥ (Tab)      |
 | `"`                  | `"`          |
 | `\`                  | `\`          |
-| `\n` (Enter)         | Nothing      |
+| ↵ (Newline)          | (Nothing)    |
 
-Any characters are allowed, except `"` without `\` before it, including `\n` (Enter).
+Any characters are allowed, except `"` without `\` before it, including ↵ (Newline).
 
 Examples:
 ```
-"Hello\t\n\"IEML\"!" # Hello{Enter}"IEML"!
+"Hello\t\n\"IEML\"!" # Hello{Newline}"IEML"!
 ```
 ```
 	"Hello\t
@@ -150,7 +150,7 @@ Not part of the string
 
 *Boolean* and *Numbers* can be read as Raw data if the config-reader so requests.
 
-Starts without special characters, ends at the end of the line where it began. Characters are not escaped. Characters are forbidden: `"`, `\n` (Enter), `>`, `<`.
+Starts without special characters, ends at the end of the line where it began. Characters are not escaped. Characters are forbidden: `"`, ↵ (Newline), `>`, `<`.
 
 Examples:
 ```
@@ -174,9 +174,9 @@ null
 
 ## Lists
 
-Each element of the list is denoted by `- `, a space can be replaced by `\n` (Enter).
+Each element of the list is denoted by `- `, a space can be replaced by ↵ (Newline).
 
-There may be blank lines between and in front of the *List* items, consisting of: ` `, `\t` (Tab) and comments.
+There may be blank lines between and in front of the *List* items, consisting of: ` `, ⇥ (Tab) and comments.
 
 Example:
 ```
@@ -189,7 +189,7 @@ Example:
 	- 4
 ```
 
-### Short note
+### Short notation
 
 Starts with `[` and ends with `]`. Inside there is data in `, `. 
 
@@ -199,7 +199,7 @@ Valid data:
 - *Classic string*
 - *Raw data*
 - *Null*
-- Another *List* in the *Short note*
+- Another *List* in the *Short notation*
 
 Example:
 ```
@@ -209,9 +209,9 @@ Example:
 
 ## Maps
 
-The map consists of keys and their corresponding values. Keys cannot be repeated. Symbols cannot be used in the key name: `"`, `\n` (Enter), `>`, `<`. The first character of the key must not be a ` `. Keys and values are separated by `: `, space can be omitted.
+The map consists of keys and their corresponding values. Keys cannot be repeated. Symbols cannot be used in the key name: `"`, ↵ (Newline), `>`, `<`. The first character of the key must not be a ` `. Keys and values are separated by `: `, space can be omitted.
 
-There may be blank lines between and in front of the *Map* items, consisting of: ` `, `\t` (Tab) and comments.
+There may be blank lines between and in front of the *Map* items, consisting of: ` `, ⇥ (Tab) and comments.
 
 Example:
 ```
@@ -221,7 +221,7 @@ b:
 	- 20
 ```
 
-## Short note
+## Short notation
 
 If there is only one value in a *List* or in a *Map*, you can write them on one line.
 
@@ -236,7 +236,7 @@ All values can be assigned a tag. This is some string that can store some charac
 
 ### All
 
-At the beginning you can write <code>&nbsp;=&nbsp;</code>, the first space can be omitted. After that a string containing no characters: `"`, `\n` (Enter), `<`, `>`. And after that write `: `, space can be omitted. This will assign a tag to all content.
+At the beginning you can write <code>&nbsp;=&nbsp;</code>, the first space can be omitted. After that a string containing no characters: `"`, ↵ (Newline), `<`, `>`. And after that write `: `, space can be omitted. This will assign a tag to all content.
 
 Example:
 ```
@@ -247,7 +247,7 @@ Example:
 
 ### Lists
 
-After `- ` you can write <code>&nbsp;=&nbsp;</code>, the first space can be omitted. This is followed by a line containing no characters: `"`, `\n` (Enter), `<`, `>`. And after that write `: `, space can be omitted. This will assign a tag to the *List* item.
+After `- ` you can write <code>&nbsp;=&nbsp;</code>, the first space can be omitted. This is followed by a line containing no characters: `"`, ↵ (Newline), `<`, `>`. And after that write `: `, space can be omitted. This will assign a tag to the *List* item.
 
 Example:
 ```
@@ -257,7 +257,7 @@ Example:
 
 ### Maps
 
-After the key name but before `: ` you can write <code>&nbsp;=&nbsp;</code>, the first space can be omitted. This is followed by a line containing no characters: `"`, `\n` (Enter), `<`, `>`. And after that write `: `. This will assign a tag to the content by key.
+After the key name but before `: ` you can write <code>&nbsp;=&nbsp;</code>, the first space can be omitted. This is followed by a line containing no characters: `"`, ↵ (Newline), `<`, `>`. And after that write `: `. This will assign a tag to the content by key.
 
 Example:
 ```
@@ -268,7 +268,7 @@ job: > Chef
 ## Anchors
 ### Taking
 
-You can write `&` before the value, after which a string not containing: `"`, `\n` (Enter), `<`, `>`, ` `. This string will be the name of the anchor. 
+You can write `&` before the value, after which a string not containing: `"`, ↵ (Newline), `<`, `>`, ` `. This string will be the name of the anchor. 
 Space after the anchor is skipped, then comes the value.
 
 Example:
@@ -284,7 +284,7 @@ first: &name > John
 
 ### Getting
 
-You can write `*` before the value, followed by a string that does not contain: `"`, `\n` (Enter), `<`, `>`, ` `. This string will be the name of the requested anchor. Its value will be inserted in that place.
+You can write `*` before the value, followed by a string that does not contain: `"`, ↵ (Newline), `<`, `>`, ` `. This string will be the name of the requested anchor. Its value will be inserted in that place.
 
 Let's assume a non-direct order of anchors. That is, you can first get an anchor, and then take it.
 
