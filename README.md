@@ -311,7 +311,7 @@ You can write <code><&nbsp;</code> before the value followed by a line. That lin
 
 Example:
 ```
-key: < subfile.ieml
+key: < subfile
 ```
 
 What the `subfile.ieml` could look like:
@@ -327,7 +327,7 @@ When you include a file, you can pass a *map* of anchors, these anchors will onl
 
 Example:
 ```
-key: < editor.ieml
+key: < editor
 	name: > John
 ```
 
@@ -344,7 +344,7 @@ If there is an anchor in both the child and parent file, then the anchor of the 
 Example:
 ```
 name-key: &name John
-key: < editor.ieml
+key: < editor
 ```
 
 What the `editor.ieml` could look like:
