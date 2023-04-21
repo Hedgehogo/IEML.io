@@ -58,7 +58,7 @@ Examples:
 .1 # Error
 ```
 
-The function further works for any numbers. 
+The functional further works for any numbers. 
 
 **Specifying the number system.**
 
