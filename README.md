@@ -2,7 +2,7 @@
 IEML (Interface Engine Markup Language) - A simple but powerful config with support for file uploads, inter-file anchors and tags.
 
 # Implementations 
-- [C++](https://github.com/Hedgehogo/IEML-cpp) (*short lists* are not supported, support for strings is outdated)
+- [C++](https://github.com/Hedgehogo/IEML-cpp) (*short lists* are not supported, support for strings, numbers and booleans is outdated)
 
 # Syntax
 
@@ -22,9 +22,9 @@ Example:
 ```
 
 ## Scalar values
-### Boolean
+### Booleans
 
-A string equal to `true`, `false`, `yes`, `no` is treated as a Boolean value.
+A string equal to `yes`, `no` is treated as a Boolean value.
 
 Example:
 ```
@@ -32,30 +32,20 @@ yes
 ```
 
 ### Numbers
-*Integer decimal numbers.*
+**Integer numbers.**
 
-`_` can be used as a separator between digits.
+`_` can be used as a separator between digits. Digits (0-9) and capital letters of the English alphabet (A-Z) can be used, if they exist in the required number system. The default numbering system is decimal.
 
 Example:
 ```
-1_005
+3_005 # 3005 in decimal
 ```
 
-*Integers in a particular system of notation.*
+**Real numbers.**
 
-Zero is written first, followed by an English letter from A to Z, indicating a numbering system from 1-cimal to 26-cimal respectively. This is followed by a number in the resulting number system with all the letters in upper case. `_` can be used as a separator between digits.
+`.` is used as a separator between the integer part and the fractional part. `_` can be used as a separator between digits. The integer part is required to have at least one digit. Digits (0-9) and capital letters of the English alphabet (A-Z) can be used, if they exist in the required number system. The default numbering system is decimal.
 
-Examples:
-```
-0pFF # Hexadecimal, 255 in decimal
-```
-```
-0b01100101 # Binary, 101 in decimal
-```
-
-*Real decimal numbers.*
-
-`.` is used as a separator between the integer part and the fractional part. `_` can be used as a separator between digits. The integer part is required to have at least one digit.
+Any *integer number* can be read as a real number.
 
 Examples:
 ```
@@ -68,26 +58,43 @@ Examples:
 .1 # Error
 ```
 
-*Real numbers in a particular number system.*
+The function further works for any numbers. 
 
-Zero is written first, followed by an English letter from A to Z, indicating a numbering system from 1-cimal to 26-cimal respectively. This is followed by a number in the resulting number system with all the letters in upper case. `.` is used as a separator between the integer part and the fractional part. `_` can be used as a separator between digits. The integer part is required to have at least one digit.
+**Specifying the number system.**
+
+Before the number is written the number system in decimal notation, and then it is written `'`.
 
 Examples:
 ```
-0c0.1 # Trinary, 1/3 in decimal
+16'FF # Hexadecimal, integer, 255 in decimal
 ```
 ```
-0b10. # Binary, 2 in decimal
+2'01100101 # Binary, integer, 101 in decimal
 ```
 ```
-0b.1 # Binary, error
+3'0.1 # Trinary, real, 1/3 in decimal
+```
+```
+2'10. # Binary, real, 2 in decimal
+```
+
+**Scientific notation.**
+
+A number can be followed by an `e` followed by a full *integer number* (can be written in different number systems, etc.). This number is an exponent.
+
+Examples:
+```
+9.109_383_56e−31 # 9.10938356 * (10^−31) in decimal
+```
+```
+1e16'F # 1 * (10^15) in decimal
 ```
 
 ### Strings
 
 All strings must be indented if they are moved to the next line. The indent does not become part of the line.
 
-*Classic string*
+**Classic string**
 
 It is written in `"`. Characters are escaped with `\`. The characters supported for escaping: 
 | The symbol after `\` | The result   |
@@ -117,7 +124,7 @@ Examples:
 \"IEML\"!" # Error, the tab level for the string is not respected
 ```
 
-*Line string*
+**Line string**
 
 Starts with characters <code>>&nbsp;</code> and reads to the end of the line. The characters are not escaped. It is not permissible to move it to the next line.
 
@@ -129,7 +136,7 @@ Examples:
 > # Not a comment
 ```
 
-*Not escaped string*
+**Not escaped string**
 
 It begins with `>>` characters followed immediately by the end of the line. Then each line starts with an indent, followed immediately by a string to the end of the line. This continues until the indentation is lower than required or the end of the file is reached.
 
