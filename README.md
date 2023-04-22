@@ -2,10 +2,9 @@
 IEML (Interface Engine Markup Language) - A simple but powerful config with support for file uploads, inter-file anchors and tags.
 
 # Implementations 
-- [C++](https://github.com/Hedgehogo/IEML-cpp) (*short lists* are not supported, support for strings, numbers and booleans is outdated)
+- [C++](https://github.com/Hedgehogo/IEML-cpp) (support is outdated)
 
 # Syntax
-
 Nesting level is determined by indentation, indentation is allowed only from tabs.
 
 ## Comments
@@ -32,9 +31,10 @@ yes
 ```
 
 ### Numbers
-**Integer numbers.**
 
 `_` can be used as a separator between digits. Digits (0-9) and capital letters of the English alphabet (A-Z) can be used, if they exist in the required number system. The default numbering system is decimal.
+
+**Integer numbers.**
 
 Example:
 ```
@@ -43,7 +43,7 @@ Example:
 
 **Real numbers.**
 
-`.` is used as a separator between the integer part and the fractional part. `_` can be used as a separator between digits. The integer part is required to have at least one digit. Digits (0-9) and capital letters of the English alphabet (A-Z) can be used, if they exist in the required number system. The default numbering system is decimal.
+`.` is used as a separator between the integer part and the fractional part. The integer part is required to have at least one digit.
 
 Any *integer number* can be read as a real number.
 
@@ -181,7 +181,7 @@ null
 
 ## Lists
 
-Each element of the list is denoted by <code>-&nbsp;</code>, a space can be replaced by ↵ (Newline).
+Each element of the list is denoted by <code>-&nbsp;</code>, a space can be omitted if the next character is ↵ (Newline).
 
 There may be blank lines between and in front of the *List* items, consisting of: <code>&nbsp;</code>, ⇥ (Tab) and comments.
 
@@ -216,7 +216,7 @@ Example:
 
 ## Maps
 
-The map consists of keys and their corresponding values. Keys cannot be repeated. Symbols cannot be used in the key name: `"`, ↵ (Newline), `>`, `<`. The first character of the key must not be a <code>&nbsp;</code>. Keys and values are separated by <code>:&nbsp;</code>, space can be omitted.
+The map consists of keys and their corresponding values. Keys cannot be repeated. Symbols cannot be used in the key name: `"`, ↵ (Newline), `>`, `<`. The first character of the key must not be a <code>&nbsp;</code>. Keys and values are separated by <code>:&nbsp;</code>, space can be omitted if the next character is ↵ (Newline).
 
 There may be blank lines between and in front of the *Map* items, consisting of: <code>&nbsp;</code>, ⇥ (Tab) and comments.
 
@@ -241,34 +241,22 @@ a: b: - 10
 
 All values can be assigned a tag. This is some string that can store some characteristic of the value, for example you can store a type there.
 
-### All
+The tag is preceded by <code>=&nbsp;</code>. This is followed by a string containing no characters: `"`, ↵ (Newline), `<`, `>`. This string is a tag. It must be followed by <code>:&nbsp;</code>.
 
-At the beginning you can write <code>&nbsp;=&nbsp;</code>, the first space can be omitted. After that a string containing no characters: `"`, ↵ (Newline), `<`, `>`. And after that write <code>:&nbsp;</code>, space can be omitted. This will assign a tag to all content.
+The tag does not raise the indentation level and is written right before the value it is assigned to.
 
 Example:
 ```
 = Meat:
-	- > Chicken
-	- > Turkey
+- > Chicken
+- > Turkey
 ```
-
-### Lists
-
-After `- ` you can write <code>&nbsp;=&nbsp;</code>, the first space can be omitted. This is followed by a line containing no characters: `"`, ↵ (Newline), `<`, `>`. And after that write <code>:&nbsp;</code>, space can be omitted. This will assign a tag to the *List* item.
-
-Example:
 ```
 - = Animal: > Dog
 - > Stone
 ```
-
-### Maps
-
-After the key name but before <code>:&nbsp;</code> you can write <code>&nbsp;=&nbsp;</code>, the first space can be omitted. This is followed by a line containing no characters: `"`, ↵ (Newline), `<`, `>`. And after that write <code>:&nbsp;</code>. This will assign a tag to the content by key.
-
-Example:
 ```
-name = English: > John
+name: = English: > John
 job: > Chef
 ```
 
