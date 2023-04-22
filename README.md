@@ -7,6 +7,8 @@ IEML (Interface Engine Markup Language) - A simple but powerful config with supp
 # Syntax
 Nesting level is determined by indentation, indentation is allowed only from tabs.
 
+All elements can be moved to the next line with an indentation level.
+
 ## Comments
 
 The comment begins with <code>#&nbsp;</code> or `#!` and ends at the end of the line.
@@ -185,6 +187,8 @@ Each element of the list is denoted by <code>-&nbsp;</code>, a space can be omit
 
 There may be blank lines between and in front of the *List* items, consisting of: <code>&nbsp;</code>, ⇥ (Tab) and comments.
 
+Lists increase the indentation level for each element.
+
 Example:
 ```
 - 10
@@ -219,6 +223,8 @@ Example:
 The map consists of keys and their corresponding values. Keys cannot be repeated. Symbols cannot be used in the key name: `"`, ↵ (Newline), `>`, `<`. The first character of the key must not be a <code>&nbsp;</code>. Keys and values are separated by <code>:&nbsp;</code>, space can be omitted if the next character is ↵ (Newline).
 
 There may be blank lines between and in front of the *Map* items, consisting of: <code>&nbsp;</code>, ⇥ (Tab) and comments.
+
+Lists increase the indentation level for each element.
 
 Example:
 ```
