@@ -34,7 +34,7 @@ yes
 
 ### Numbers
 
-`_` can be used as a separator between digits. Digits (0-9) and capital letters of the English alphabet (A-Z) can be used, if they exist in the required number system. The default numbering system is decimal.
+Digits (0-9) and capital letters of the English alphabet (A-Z) can be used, if they exist in the required number system. `_` can be used as a separator between digits. The default numbering system is decimal. 
 
 **Integer numbers.**
 
