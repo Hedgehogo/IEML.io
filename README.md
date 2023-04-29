@@ -2,7 +2,7 @@
 IEML (Interface Engine Markup Language) - A simple but powerful config with support for file uploads, inter-file anchors and tags.
 
 # Implementations 
-- [C++](https://github.com/Hedgehogo/IEML-cpp) (support is outdated)
+- [C++](https://github.com/Hedgehogo/IEML-cpp) (no support for *short lists*, support for *classic strings* is outdated)
 
 # Syntax
 Nesting level is determined by indentation, indentation is allowed only from tabs.
