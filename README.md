@@ -106,6 +106,7 @@ It is written in `"`. Characters are escaped with `\`. The characters supported 
 | `n`                  | ↵ (Newline)  |
 | `t`                  | ⇥ (Tab)      |
 | ↵ (Newline)          | (Nothing)    |
+| Any                  | `\` + Any    |
 
 Any characters are allowed, except `"` without `\` before it, including ↵ (Newline).
 
