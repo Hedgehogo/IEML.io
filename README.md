@@ -1,6 +1,8 @@
 # IEML
 IEML (Interface Engine Markup Language) - A simple but powerful config with support for file uploads, inter-file anchors and tags.
 
+Designed to store and manually edit data, poorly suited for non-manual editing and data transfer.
+
 # Implementations 
 - [C++](https://github.com/Hedgehogo/IEML-cpp) (no support for *short lists*)
 
