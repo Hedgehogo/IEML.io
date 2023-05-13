@@ -217,7 +217,7 @@ Valid data:
 
 Example:
 ```
-[12, true, "Hello", Hello, null, [10, 15]]
+[12, yes, "Hello", Hello, null, [10, 15]]
 ```
 
 
