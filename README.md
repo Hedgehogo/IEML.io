@@ -223,7 +223,7 @@ Example:
 
 ## Maps
 
-The map consists of keys and their corresponding values. Keys cannot be repeated. Symbols cannot be used in the key name: `"`, ↵ (Newline), `>`, `<`. The first character of the key must not be a <code>&nbsp;</code>. Keys and values are separated by <code>:&nbsp;</code>, space can be omitted if the next character is ↵ (Newline).
+The map consists of keys and their corresponding values. Keys cannot be repeated. Symbols cannot be used in the key name: ↵ (Newline). The first character of the key must not be a <code>&nbsp;</code>. Keys and values are separated by <code>:&nbsp;</code>, space can be omitted if the next character is ↵ (Newline).
 
 There may be blank lines between and in front of the *Map* items, consisting of: <code>&nbsp;</code>, ⇥ (Tab) and comments.
 
@@ -250,7 +250,7 @@ a: b: - 10
 
 All values can be assigned a tag. This is some string that can store some characteristic of the value, for example you can store a type there.
 
-The tag is preceded by <code>=&nbsp;</code>. This is followed by a string containing no characters: `"`, ↵ (Newline), `<`, `>`. This string is a tag. It must be followed by <code>:&nbsp;</code>.
+The tag is preceded by <code>=&nbsp;</code>. This is followed by a string containing no characters: ↵ (Newline). This string is a tag. It must be followed by <code>:&nbsp;</code>.
 
 The tag does not raise the indentation level and is written right before the value it is assigned to.
 
@@ -272,7 +272,7 @@ job: > Chef
 ## Anchors
 ### Taking
 
-You can write `&` before the value, after which a string not containing: `"`, ↵ (Newline), `<`, `>`, <code>&nbsp;</code>. This string will be the name of the anchor. 
+You can write `&` before the value, after which a string not containing: ↵ (Newline), <code>&nbsp;</code>. This string will be the name of the anchor. 
 Space after the anchor is skipped, then comes the value.
 
 Example:
@@ -288,7 +288,7 @@ first: &name > John
 
 ### Getting
 
-You can write `*` before the value, followed by a string that does not contain: `"`, ↵ (Newline), `<`, `>`, <code>&nbsp;</code>. This string will be the name of the requested anchor. Its value will be inserted in that place.
+You can write `*` before the value, followed by a string that does not contain: ↵ (Newline), <code>&nbsp;</code>. This string will be the name of the requested anchor. Its value will be inserted in that place.
 
 Let's assume a non-direct order of anchors. That is, you can first get an anchor, and then take it.
 
