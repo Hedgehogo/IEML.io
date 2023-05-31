@@ -4,7 +4,7 @@ IEML (Interface Engine Markup Language) - A simple but powerful config with supp
 Designed to store and manually edit data, poorly suited for non-manual editing and data transfer.
 
 # Implementations 
-- [C++](https://github.com/Hedgehogo/IEML-cpp) (no support for *short lists*)
+- [C++](https://github.com/Hedgehogo/IEML-cpp)
 
 # Syntax
 Nesting level is determined by indentation, indentation is allowed only from tabs.
