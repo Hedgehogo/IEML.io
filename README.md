@@ -213,6 +213,7 @@ Valid data:
 - *Classic string*
 - *Raw data*
 - *Null*
+- *Anchor* getting
 - Another *List* in the *Short notation*
 
 Example:
