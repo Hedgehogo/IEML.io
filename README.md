@@ -169,7 +169,7 @@ Examples:
 Hello IEML!
 ```
 ```
->Hello IEML! # Error, Raw data prohibits the `>` character, and an unshielded string requires a space after this character
+>Hello IEML! # Error, Raw data prohibits the `>` character, and an not escaped string requires a space after this character
 ```
 
 ### Null
