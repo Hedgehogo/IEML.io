@@ -66,7 +66,7 @@ The functional further works for any numbers.
 
 **Specifying the number system.**
 
-Before the number is written the number system in decimal notation, and then it is written `'`.
+First, the number base is written in decimal notation. Then, after `'`, goes the number itself.
 
 Examples:
 ```
