@@ -186,7 +186,7 @@ null
 
 ## Lists
 
-Each element of the list is denoted by <code>-&nbsp;</code>, a space can be omitted if the next character is ↵ (Newline).
+Each element of the list is denoted by <code>-&nbsp;</code>, the space can be omitted if the next character is ↵ (Newline).
 
 There may be blank lines between and in front of the *List* items, consisting of: <code>&nbsp;</code>, ⇥ (Tab) and comments.
 
