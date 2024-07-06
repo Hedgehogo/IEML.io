@@ -76,7 +76,7 @@ Examples:
 2'01100101 # Binary, integer, 101 in decimal
 ```
 ```
-3'0.1 # Trinary, real, 1/3 in decimal
+3'0.1 # Ternary, real, 1/3 in decimal
 ```
 ```
 2'10. # Binary, real, 2 in decimal
