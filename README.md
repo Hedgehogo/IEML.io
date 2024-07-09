@@ -4,7 +4,7 @@ IEML (Interface Engine Markup Language) - A simple but powerful config with supp
 Designed to store and manually edit data, poorly suited for non-manual editing and data transfer.
 
 # Implementations 
-- [C++](https://github.com/Hedgehogo/IEML-cpp)
+- [C++](https://github.com/Hedgehogo/IEML-cpp) (outdated)
 
 # Syntax
 Nesting level is determined by indentation, indentation is allowed only from tabs.
@@ -273,34 +273,36 @@ job: > Chef
 ## Anchors
 ### Taking
 
-You can write `&` before the value, after which a string not containing: ↵ (Newline), <code>&nbsp;</code>. This string will be the name of the anchor. 
+You can write `@` before the value, after which a string not containing: ↵ (Newline). The string is followed by `: `. The first character of the string must not be a <code>&nbsp;</code>. This string will be the name of the anchor. 
 Space after the anchor is skipped, then comes the value.
 
 Example:
 ```
-&name > John
+@name: > John
 ```
 
 Example:
 ```
 # name = "John"
-first: &name > John
+first: @name: > John
 ```
 
 ### Getting
 
-You can write `*` before the value, followed by a string that does not contain: ↵ (Newline), <code>&nbsp;</code>. This string will be the name of the requested anchor. Its value will be inserted in that place.
+You can write `@` before the value, followed by a string that does not contain: ↵ (Newline), `: `. This string will be the name of the requested anchor. Its value will be available from this place.
 
 Let's assume a non-direct order of anchors. That is, you can first get an anchor, and then take it.
 
 Example:
 ```
-take: &name > John
-get: *name # Here will be the "John"
+take: @name: > John
+# Here will be the "John"
+get: @name 
 ```
 ```
-get: *name # Here will be the "John"
-take: &name > John
+# Here will be the "John"
+get: @name
+take: @name: > John
 ```
 
 ## Including files
@@ -333,7 +335,7 @@ What the `editor.ieml` could look like:
 ```
 template-editor:
 	text: > Let's talk about IEML!
-	name: *name
+	name: @name
 ```
 
 In addition to passing anchors, child files can access parent file anchors directly.
@@ -341,7 +343,7 @@ If there is an anchor in both the child and parent file, then the anchor of the 
 
 Example:
 ```
-name-key: &name John
+name-key: @name: John
 key: < editor
 ```
 
@@ -349,7 +351,7 @@ What the `editor.ieml` could look like:
 ```
 template-editor:
 	text: > Let's talk about IEML!
-	name: *name
+	name: @name
 ```
 
 # For developers
