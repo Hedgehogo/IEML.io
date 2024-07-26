@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "README.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               }
             }
@@ -146,8 +146,10 @@
       "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "bc67e4e5612c0aa8",
+  "active": "773f41f898397107",
   "lastOpenFiles": [
+    "gitignore",
+    "New Text Document.txt",
     "README.md"
   ]
 }
