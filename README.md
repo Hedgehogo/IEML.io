@@ -1,5 +1,5 @@
 # IEML
-IEML (Interface Engine Markup Language) - A simple but powerful config with support for file uploads, inter-file anchors and tags.
+IEML (Interface Engine Markup Language) - A simple but powerful data representation format with support for file uploads, inter-file anchors and tags.
 
 Designed to store and manually edit data, poorly suited for non-manual editing and data transfer.
 
@@ -7,27 +7,50 @@ Designed to store and manually edit data, poorly suited for non-manual editing a
 - [C++](https://github.com/Hedgehogo/IEML-cpp)
 
 # Syntax
-Nesting level is determined by indentation, indentation is allowed only from tabs.
+A *character* is referred to as a Unicode grapheme cluster.
 
-All elements can be moved to the next line with an indentation level.
+An *indent* is a sequence of N number of *characters* ⇥ (Tab). An *indentation level* is the number N. *Increasing the indentation level* is adding a one to the number N. The initial *indentation level* for any document is 0.
+
+A *line break* is a sequence consisting of the optional *character* ↤ (Return stub) and the mandatory *character* ↵ (Newline).
+
+A *node* is one of the enumerated list where, the higher the element, the higher it is prioritised: 
+- *Tagged*
+- *Anchor*
+- *File*
+- *List*
+- *Map*
+- *Scalar*
+
+A *child node* is an optional sequence W followed by a *node*. The W sequence begins with a *line break*, continues with any number of *blank lines*, and ends with an *indent*.
 
 ## Comments
+A *comment* is a sequence beginning with the sequence <code>#&nbsp;</code> or `#!` and ending with a sequence of any number of *characters* that are not part of a *line break*.
 
-The comment begins with <code>#&nbsp;</code> or `#!` and ends at the end of the line.
+A *whitespace* is a sequence starting with any number of ` ` or ⇥ (Tab) characters, ending with an optional comment.
 
-There may be blank lines at the beginning and end of the file, consisting of: <code>&nbsp;</code>, ⇥ (Tab) and comments.
+A *blank line* is a sequence starting with *whitespace* and ending with a *line break* or the end of a file.
+
+Any document starts with any number of *blank lines*, continues with a single *node*, and ends with any number of *blank lines*.
 
 Example:
 ```
 #!Can be used for shebang
 # At the beginning of the line
 10 # After the scalar
+# At the end of file
 ```
 
 ## Scalar values
+A *scalar* is a sequence of one of the elements of the list S and *whitespace*.
+
+In the S list, the higher items are prioritised and arranged as follows:
+- String
+- Number
+- Null
+- Raw data
 ### Booleans
 
-A string equal to `yes`, `no` is treated as a Boolean value.
+A *boolean* is a sequence equal to `yes` or `no`.
 
 Example:
 ```
@@ -35,82 +58,76 @@ yes
 ```
 
 ### Numbers
+A *digit* is a *character* included in the set `0` - `9` or `A` - `Z`. A *base digit* is a *digit* that exists in the specified base. A *decimal digit* is a *base digit* with a base of 10. Unless otherwise specified, the default base is 10. Symbols `0` - `9` are mapped to the number range 0 - 9, and `A` - `Z` to 10 - 35.
 
-Digits (0-9) and capital letters of the English alphabet (A-Z) can be used, if they exist in the required number system. `_` can be used as a separator between digits. The default numbering system is decimal. 
+A *number* is a sequence of a *number content* and the optional sequence E.
 
-**Integer numbers.**
+A *number content* is a sequence starting with the optional character `-`, and following it sequentially: optional sequence B, non-zero sequence N and optional sequence F
+
+The sequence B begin with a non-zero sequence of *decimal digits* and `_` and end with the symbol `'`. The entire contents of sequence B except for the characters `_` and `'` are the base, written in decimal notation, for sequence N.
+
+The sequence N contains only *base digits* and `_` characters. Its contents, except for the `_` *characters*, are the integer part of a number, written in positional notation.
+
+The sequence F starts with the character `.` followed by a sequence containing only *base digits* and the *characters* `_`. Its contents, except for the *characters* `_` and `'`, are the fractional part of a number, written in positional notation.
+
+The sequence E starts with the *character* `e` and ends with a *number content* that does not contain the sequence F. The contents of the sequence with the exception of *character* `e` is an exponent for scientific notation.
+
+**Integer number**
+
+An *integer number* is a *number* that does not contain the sequence F.
 
 Example:
+```aber
+3_005 // 3005 in decimal
 ```
-3_005 # 3005 in decimal
+```aber
+16'FF // Hexadecimal, integer, 255 in decimal
+```
+```aber
+2'01100101 // Binary, integer, 101 in decimal
 ```
 
-**Real numbers.**
+**Floating point number**
 
-`.` is used as a separator between the integer part and the fractional part. The integer part is required to have at least one digit.
-
-Any *integer number* can be read as a real number.
+A *floating point number* is a *number* that optionally contains the sequence F.
 
 Examples:
-```
+```aber
 1.15
 ```
+```aber
+3'0.1 // Trinary, 1/3 in decimal
 ```
-23.
-```
-```
-.1 # Error
-```
-
-The functional further works for any numbers. 
-
-**Specifying the number system.**
-
-First, the number base is written in decimal notation. Then, after `'`, goes the number itself.
-
-Examples:
-```
-16'FF # Hexadecimal, integer, 255 in decimal
-```
-```
-2'01100101 # Binary, integer, 101 in decimal
-```
-```
-3'0.1 # Ternary, real, 1/3 in decimal
-```
-```
-2'10. # Binary, real, 2 in decimal
+```aber
+2'10. // Binary, 2 in decimal
 ```
 
 **Scientific notation.**
-
-A number can be followed by an `e` followed by a full *integer number* (can be written in different number systems, etc.). This number is an exponent.
-
 Examples:
 ```
-9.109_383_56e−31 # 9.10938356 * (10^−31) in decimal
+9.109_383_56e−31 # 9.10938356 * 10^(−31) in decimal
 ```
 ```
-1e16'F # 1 * (10^15) in decimal
+1e16'F # 1 * 10^15 in decimal
 ```
 
 ### Strings
 
-All strings must be indented if they are moved to the next line. The indent does not become part of the line.
-
 **Classic string**
 
-It is written in `"`. Characters are escaped with `\`. The characters supported for escaping: 
-| The symbol after `\` | The result   |
-|----------------------|--------------|
-| `"`                  | `"`          |
-| `\`                  | `\`          |
-| `n`                  | ↵ (Newline)  |
-| `t`                  | ⇥ (Tab)      |
-| ↵ (Newline)          | (Nothing)    |
-| Any                  | `\` + Any    |
+A *classic string* is a sequence starting with the *character* `"` and ending with the same *character* that is not part of an *escape sequence*, and contains a sequence of *escape sequences*, sequences I and *characters* except for `"` and ↵ (Newline). The contents are sequentially standing *characters* and *characters* obtained by substituting *escape sequences*.
 
-Any characters are allowed, except `"` without `\` before it, including ↵ (Newline).
+The sequence I starts with a *line break* and ends with an *indent*, the *line break* remains part of the contents of the line and the *indent* does not.
+
+For *string* *escape sequences* are mapped to *character* according to the following table: 
+
+| Аfter `\`  | Result      |
+| ---------- | ----------- |
+| `"`        | `"`         |
+| `\`        | `\`         |
+| `n`        | ↵ (Newline) |
+| `t`        | ⇥ (Tab)     |
+| Sequence I | Nothing     |
 
 Examples:
 ```
@@ -131,7 +148,7 @@ Examples:
 
 **Line string**
 
-Starts with characters <code>>&nbsp;</code> and reads to the end of the line. The characters are not escaped. It is not permissible to move it to the next line.
+A *line string* is a sequence beginning with the sequence <code>>&nbsp;</code>, and ending with any number of *characters* that are not part of a *line break*. Everything except for <code>>&nbsp;</code> is the contents of the string.
 
 Examples:
 ```
@@ -143,7 +160,13 @@ Examples:
 
 **Not escaped string**
 
-It begins with `>>` characters followed immediately by the end of the line. Then each line starts with an indent, followed immediately by a string to the end of the line. This continues until the indentation is lower than required or the end of the file is reached.
+An *not escaped string* is a sequence starting with sequence S and ending with any number of alternating sequences I and C. The sequential concatenation of the contents of all sequences I and C is the contents of the string.
+
+The sequence S starts with the sequence `>>` and ends with a *blank line* and *indent*.
+
+The sequence I starts with a *line break* and ends with an *indent*. Only the *line break* is content.
+
+The sequence C is any number of *characters* that are not part of a *line break*. The whole sequence is content.
 
 Examples:
 ```
@@ -160,21 +183,21 @@ Not part of the string
 
 ### Raw data
 
-*Boolean* and *Numbers* can be read as Raw data if the config-reader so requests.
+Note: *boolean* and *numbers* can be read as *raw data* if the config-reader so requests.
 
-Starts without special characters, ends at the end of the line where it began. Characters are not escaped. Characters are forbidden: `"`, ↵ (Newline), `>`, `<`.
+A *raw data* is any number of *characters* that are not `"`, `>`, `<` or part of a *line break*.
 
 Examples:
 ```
 Hello IEML!
 ```
 ```
->Hello IEML! # Error, Raw data prohibits the `>` character, and an not escaped string requires a space after this character
+>Hello IEML! # Error, Raw data prohibits the `>` character, and an line string requires a space after this character
 ```
 
 ### Null
 
-A string equal to `null` is treated as a Null.
+A *null* is a sequence `null`.
 
 Examples:
 ```
@@ -185,6 +208,8 @@ null
 ```
 
 ## Lists
+
+
 
 Each element of the list is denoted by <code>-&nbsp;</code>, the space can be omitted if the next character is ↵ (Newline).
 
