@@ -16,7 +16,7 @@ A *line break* is a sequence consisting of the optional *character* ↤ (Return 
 A *node* is one of the enumerated list where, the higher the element, the higher it is prioritised: 
 - *Tagged*
 - *Anchor*
-- *File*
+- *Child document*
 - *List*
 - *Map*
 - *Scalar*
@@ -208,13 +208,13 @@ null
  null # Raw data, Null does not allow spaces before the word
 ```
 
-## Lists
+## List
 
 A *list* is a sequence of: sequence E, the number N of sequences of pairs of sequences I and E. If the list is a *child node* without sequence W, then the number N must be 0. The content is a list of the contents of the E sequences, in the same order in which they occur in the document.
 
 The sequence I starts with a *line break*, continues with any number of *blank lines*, and ends with an *indent*.
 
-The sequence E starts with the sequence <code>-&nbsp;</code>, and ends with a *child node* with *increasing indentation level*. The space can be omitted if the sequence is followed by a *line break*. The content is the content of the *child node*.
+The sequence E starts with the sequence <code>-&nbsp;</code>, and ends with a *child node* with *increasing indentation level*. The space after `-` can be omitted if the sequence is followed by a *line break*. The content is the content of the *child node*.
 
 Example:
 ```
@@ -245,17 +245,19 @@ Example:
 [12, yes, "Hello", Hello, null, [10, 15]]
 ```
 
-## Maps
+## Map
 
 A *name* is a sequence of any *characters* that are not part of sequence <code>:&nbsp;</code> or a *line break* that meets the following requirements:
 - It must not begin with the sequence <code>=&nbsp;</code>, `@`, ` ` or ⇥ (Tab)
 - It must not end with `:`
 
+A *pair separator* is a sequence starting with the *character* `:` and ending with the *character* ` `, optional if followed by a *line break*.
+
 A *map* is a sequence of: sequence E, the number N of sequences of pairs of sequences I and E. If the list is a *child node* without sequence W, then the number N must be 0. The content is a map assembled from the content of E sequences. Keys in the map must not be repeated.
 
 The sequence I starts with a *line break*, continues with any number of *blank lines*, and ends with an *indent*.
 
-The sequence E starts with a *name*, continues with <code>:&nbsp;</code>, and ends with a *child node* with *increasing indentation level*. The space after *name* can be omitted if the sequence is followed by a *line break*. The content is a pair of the *name* and the content of the *child node*.
+The sequence E starts with a *name*, continues with a *pair separator*, and ends with a *child node* with *increasing indentation level*. The content is a pair of the *name* and the content of the *child node*.
 
 Example:
 ```
@@ -265,13 +267,9 @@ b:
 	- 20
 ```
 
-## Tags
+## Tag
 
-All values can be assigned a tag. This is some string that can store some characteristic of the value, for example you can store a type there.
-
-The tag is preceded by <code>=&nbsp;</code>. This is followed by a string containing no characters: ↵ (Newline). This string is a tag. It must be followed by <code>:&nbsp;</code>.
-
-The tag does not raise the indentation level and is written right before the value it is assigned to.
+A tag is a sequence containing sequentially: the sequence `= `, a *name*, a *pair separator* and a *child node*. The content is a pair of *name* and content of the *child node*.
 
 Example:
 ```
@@ -288,44 +286,44 @@ name: = English: > John
 job: > Chef
 ```
 
-## Anchors
-### Taking
+## Anchor
 
-You can write `@` before the value, after which a string not containing: ↵ (Newline). The string is followed by `: `. The first character of the string must not be a <code>&nbsp;</code>. This string will be the name of the anchor. 
-Space after the anchor is skipped, then comes the value.
+An *anchor* is a sequence starting with the *character* `@`, continuing with a *name* and ending with the optional sequence V. The content is the content associated with the anchor.
+
+The sequence V starts with a *pair separator* and ends with a *child node*.
+
+An *anchor creation* is an *anchor* with a sequence V. An *anchor request* is an *anchor* with no sequence V. 
+
+If sequence V is present, the *anchor* is associated with the sequence content, it must be associated exactly once.  *Creation* and *requests* of a single *anchor* can be in any order.
 
 Example:
 ```
+# An anchor with the name "name" is associated with the value "John"
 @name: > John
 ```
-
-Example:
 ```
-# name = "John"
-first: @name: > John
-```
-
-### Getting
-
-You can write `@` before the value, followed by a string that does not contain: ↵ (Newline), `: `. This string will be the name of the requested anchor. Its value will be available from this place.
-
-Let's assume a non-direct order of anchors. That is, you can first get an anchor, and then take it.
-
-Example:
-```
-take: @name: > John
+create: @name: > John
 # Here will be the "John"
-get: @name 
+request: @name 
 ```
 ```
 # Here will be the "John"
-get: @name
-take: @name: > John
+request: @name
+create: @name: > John
 ```
 
-## Including files
+## Child document
 
-You can write <code><&nbsp;</code> before the value followed by a line. That line will be the path to the file. The contents of the file will be inserted there after the anchors are processed.
+A *child document* is a sequence starting with the sequence `< `, continuing with the sequence P and ending with the optional sequence A. A *path* is the contents of a sequence P. Content is the content of the document on the *path*.
+
+The sequence P is any number of *characters* that are not part of a *line break*. The content is the entire sequence.
+
+The sequence A starts with a *line break*, continues with any number of *blank lines* and *indent*, and ends with a *map*. The contents are the contents of the *map*.
+
+If the *path* is treated as a file path, the file extension should be omitted and the *path* treated in the next priority:
+- Path relative to the path to the current document
+- Path relative to the path to the program that reads the document
+- Absolute system path 
 
 Example:
 ```
@@ -339,9 +337,7 @@ What the `subfile.ieml` could look like:
 
 ### Anchors
 
-All file anchors are retired when the file is included, but the child file can access the anchors of the parent file. Anchors inside a file can shade anchors from an parent file.
-
-When you include a file, you can pass a *map* of anchors, these anchors will only wind up in the file.
+The contents of a sequence A are treated as a set of *anchors*, where in each pair, *name* is the *anchor* *name* and content is the content associated with the *anchor*. These *anchors* are available in the document located on the *path*, and can be shadowed by *anchors* within.
 
 Example:
 ```
@@ -356,8 +352,7 @@ template-editor:
 	name: @name
 ```
 
-In addition to passing anchors, child files can access parent file anchors directly.
-If there is an anchor in both the child and parent file, then the anchor of the child file is selected. Anchors passed with *Map* are considered to be anchors of the child file.
+All anchors available within this document are also available within the child document and can be shadowed within it.
 
 Example:
 ```
