@@ -210,7 +210,7 @@ null
 
 ## Lists
 
-A *list* is either a sequence of: sequence E, the number N of sequences of pairs of sequences I and E. If the list is a *child node* without sequence W, then the number N must be 0. The content is a list of the contents of the E sequences, in the same order in which they occur in the document.
+A *list* is a sequence of: sequence E, the number N of sequences of pairs of sequences I and E. If the list is a *child node* without sequence W, then the number N must be 0. The content is a list of the contents of the E sequences, in the same order in which they occur in the document.
 
 The sequence I starts with a *line break*, continues with any number of *blank lines*, and ends with an *indent*.
 
@@ -232,13 +232,13 @@ Example:
 Starts with `[`, continues with any number of elements of list E, separated by the sequences <code>,&nbsp;</code>, ends with the sequence `]`.
 
 In the S list, the higher items are prioritised and arranged as follows:
-- *Anchor* getting that does not contain the sequence <code>,&nbsp;</code> or `]` in the name.
+- *Anchor* getting that does not contain the sequence <code>,&nbsp;</code> or `]` in the name
 - Another *List* in the *Short notation*
 - *Classic string* that does not contain ↵ (Newline)
 - *Number*
 - *Boolean*
 - *Null*
-- *Raw data* that does not contain the sequence <code>,&nbsp;</code> or `]`.
+- *Raw data* that does not contain the sequence <code>,&nbsp;</code> or `]`
 
 Example:
 ```
@@ -247,11 +247,15 @@ Example:
 
 ## Maps
 
-The map consists of keys and their corresponding values. Keys cannot be repeated. Symbols cannot be used in the key name: ↵ (Newline). The first character of the key must not be a <code>&nbsp;</code>. Keys and values are separated by <code>:&nbsp;</code>, space can be omitted if the next character is ↵ (Newline).
+A *name* is a sequence of any *characters* that are not part of sequence <code>:&nbsp;</code> or a *line break* that meets the following requirements:
+- It must not begin with the sequence <code>=&nbsp;</code>, `@`, ` ` or ⇥ (Tab)
+- It must not end with `:`
 
-There may be blank lines between and in front of the *Map* items, consisting of: <code>&nbsp;</code>, ⇥ (Tab) and comments.
+A *map* is a sequence of: sequence E, the number N of sequences of pairs of sequences I and E. If the list is a *child node* without sequence W, then the number N must be 0. The content is a map assembled from the content of E sequences. Keys in the map must not be repeated.
 
-Lists increase the indentation level for each element.
+The sequence I starts with a *line break*, continues with any number of *blank lines*, and ends with an *indent*.
+
+The sequence E starts with a *name*, continues with <code>:&nbsp;</code>, and ends with a *child node* with *increasing indentation level*. The space after *name* can be omitted if the sequence is followed by a *line break*. The content is a pair of the *name* and the content of the *child node*.
 
 Example:
 ```
@@ -259,15 +263,6 @@ a: 10
 b:
 	- 15
 	- 20
-```
-
-## Short notation
-
-If there is only one value in a *List* or in a *Map*, you can write them on one line.
-
-Example:
-```
-a: b: - 10
 ```
 
 ## Tags
