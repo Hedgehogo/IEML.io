@@ -103,6 +103,7 @@ Examples:
 ```
 
 **Scientific notation.**
+
 Examples:
 ```
 9.109_383_56e−31 # 9.10938356 * 10^(−31) in decimal
@@ -209,13 +210,11 @@ null
 
 ## Lists
 
+A *list* is either a sequence of: sequence E, the number N of sequences of pairs of sequences I and E. If the list is a *child node* without sequence W, then the number N must be 0. The content is a list of the contents of the E sequences, in the same order in which they occur in the document.
 
+The sequence I starts with a *line break*, continues with any number of *blank lines*, and ends with an *indent*.
 
-Each element of the list is denoted by <code>-&nbsp;</code>, the space can be omitted if the next character is ↵ (Newline).
-
-There may be blank lines between and in front of the *List* items, consisting of: <code>&nbsp;</code>, ⇥ (Tab) and comments.
-
-Lists increase the indentation level for each element.
+The sequence E starts with the sequence <code>-&nbsp;</code>, and ends with a *child node* with *increasing indentation level*. The space can be omitted if the sequence is followed by a *line break*. The content is the content of the *child node*.
 
 Example:
 ```
@@ -230,22 +229,21 @@ Example:
 
 ### Short notation
 
-Starts with `[` and ends with `]`. Inside there is data in <code>,&nbsp;</code>. 
+Starts with `[`, continues with any number of elements of list E, separated by the sequences <code>,&nbsp;</code>, ends with the sequence `]`.
 
-Valid data:
-- *Boolean*
-- *Numbers*
-- *Classic string*
-- *Raw data*
-- *Null*
-- *Anchor* getting
+In the S list, the higher items are prioritised and arranged as follows:
+- *Anchor* getting that does not contain the sequence <code>,&nbsp;</code> or `]` in the name.
 - Another *List* in the *Short notation*
+- *Classic string* that does not contain ↵ (Newline)
+- *Number*
+- *Boolean*
+- *Null*
+- *Raw data* that does not contain the sequence <code>,&nbsp;</code> or `]`.
 
 Example:
 ```
 [12, yes, "Hello", Hello, null, [10, 15]]
 ```
-
 
 ## Maps
 
