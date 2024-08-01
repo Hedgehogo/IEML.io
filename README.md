@@ -229,11 +229,11 @@ Example:
 
 ### Short notation
 
-Starts with `[`, continues with any number of elements of list E, separated by the sequences <code>,&nbsp;</code>, ends with the sequence `]`.
+A *list* in *short notation* is a sequence starts with `[`, continues with any number of elements of list E, separated by the sequences <code>,&nbsp;</code>, ends with the sequence `]`.
 
 In the S list, the higher items are prioritised and arranged as follows:
-- *Anchor* getting that does not contain the sequence <code>,&nbsp;</code> or `]` in the name
-- Another *List* in the *Short notation*
+- *Anchor request* that does not contain the sequence <code>,&nbsp;</code> or `]` in the *name*
+- *List* in *short notation*
 - *Classic string* that does not contain ↵ (Newline)
 - *Number*
 - *Boolean*
